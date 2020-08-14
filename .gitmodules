@@ -1,4 +1,4 @@
 [submodule "gh-pages"]
 	path = gh-pages
-	url = https://github.com/iamchucky/PttChrome.git
+	url = https://github.com/BrLi/PttChrome.git
 	branch = gh-pages
