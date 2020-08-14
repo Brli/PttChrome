@@ -12,7 +12,6 @@ function PttChromePref(app, onInitializedCallback) {
   //this.loadDefault(onInitializedCallback);
   this.onInitializedCallback = onInitializedCallback;
   this.initCallbackCalled = false;
-  this.gdrive = new GoogleDrive(app);
 }
 
 PttChromePref.prototype = {

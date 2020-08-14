@@ -80,7 +80,7 @@ SecureShellConnection.prototype.connect = function(host, port) {
   };
 
   this.transport = this.client.connect(
-      write, auth_success, this.host, this.port, 
+      write, auth_success, this.host, this.port,
       this.login, this.password, null, this.privatekey);
 
   this.app.appConn.connectTcp(this.host, this.port, this.keepAlive);

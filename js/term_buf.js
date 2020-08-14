@@ -102,7 +102,7 @@ TermChar.prototype = {
     this.blink = false;
     this.underLine = false;
   },
-  
+
   getFg: function() {
     if (this.invert)
       return this.bright ? (this.bg + 8) : this.bg;
@@ -420,7 +420,7 @@ TermBuf.prototype = {
             var urlTemp2 = urlTemp.toLowerCase();
             line[uri[0]].startOfURL = true;
             if (urlTemp2.substr(0,6) == 'pid://') {
-              line[uri[0]].fullurl='http://www.pixiv.net/member_illust.php?mode=big&illust_id='+urlTemp2.substr(6,15);
+              line[uri[0]].fullurl='https://www.pixiv.net/member_illust.php?mode=big&illust_id='+urlTemp2.substr(6,15);
             } else {
               //var g = encodeURI(u);
               //line[uri[0]].fullurl=g;
@@ -785,7 +785,7 @@ TermBuf.prototype = {
           var strToSend = '\r';
           var lastRowText = this.getRowText(22, 0, this.cols);
           var nextLastRowText = this.getRowText(21, 0, this.cols);
-          if (lastRowText.parseDuplicatedLoginTextLastRow() && 
+          if (lastRowText.parseDuplicatedLoginTextLastRow() &&
               nextLastRowText.parseDuplicatedLoginText()) {
             if (!this.deleteDupLogin) {
               strToSend = 'n' + strToSend;
@@ -796,8 +796,8 @@ TermBuf.prototype = {
       }
 
       // make sure to come back to easy reading mode
-      if (this.prevPageState == 2 && this.pageState == 3 && 
-          !this.view.useEasyReadingMode && 
+      if (this.prevPageState == 2 && this.pageState == 3 &&
+          !this.view.useEasyReadingMode &&
           this.view.bbscore.pref.values.enableEasyReading &&
           this.view.bbscore.connectedUrl.site == 'ptt.cc') {
         this.view.useEasyReadingMode = true;
@@ -807,7 +807,7 @@ TermBuf.prototype = {
 
       if (this.view.useEasyReadingMode) {
         var lastRowText = this.getRowText(23, 0, this.cols);
-        // dealing with page state jump to 0 because last row wasn't updated fully 
+        // dealing with page state jump to 0 because last row wasn't updated fully
         if (this.pageState == 3) {
           if (!this.autoWrapLineDisplay) {
             this.sendToggleAutoWrapLineDisplayCmd();
@@ -1056,14 +1056,14 @@ TermBuf.prototype = {
       if (code > 0x7f) return true;
       else return false;
     }
-    if ((code >= 0x1100 && code <= 0x115f) || 
-        (code >= 0x2329 && code <= 0x232a) || 
-        (code >= 0x2e80 && code <= 0x303e) || 
-        (code >= 0x3040 && code <= 0xa4cf) || 
-        (code >= 0xac00 && code <= 0xd7a3) || 
-        (code >= 0xf900 && code <= 0xfaff) || 
-        (code >= 0xfe30 && code <= 0xfe6f) || 
-        (code >= 0xff00 && code <= 0xff60) || 
+    if ((code >= 0x1100 && code <= 0x115f) ||
+        (code >= 0x2329 && code <= 0x232a) ||
+        (code >= 0x2e80 && code <= 0x303e) ||
+        (code >= 0x3040 && code <= 0xa4cf) ||
+        (code >= 0xac00 && code <= 0xd7a3) ||
+        (code >= 0xf900 && code <= 0xfaff) ||
+        (code >= 0xfe30 && code <= 0xfe6f) ||
+        (code >= 0xff00 && code <= 0xff60) ||
         (code >= 0xffe0 && code <= 0xffe6)) {
       return true;
     } else {

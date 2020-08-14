@@ -169,11 +169,11 @@ function TermView(rowCount) {
       return; // Shift Ctrl Alt (19)
     if (self.bbscore.modalShown || self.bbscore.contextMenuShown)
       return;
-    if (document.getElementById('connectionAlert').style.display != 'none' && 
+    if (document.getElementById('connectionAlert').style.display != 'none' &&
       (e.keyCode == 13 || e.keyCode == 27)) {
       return;
     }
-    if (self.useEasyReadingMode && self.buf.startedEasyReading && 
+    if (self.useEasyReadingMode && self.buf.startedEasyReading &&
         !self.buf.easyReadingShowReplyText && !self.buf.easyReadingShowPushInitText &&
         self.easyReadingKeyDownKeyCode == 229) { // only use on chinese IME
       self.easyReadingOnKeyUp(e);
@@ -426,7 +426,7 @@ TermView.prototype = {
               if (code == 3) { //[4 code char]
                 spanstr1 = this.createNormalChar(ch, '?', fg2, bg2);
                 spanstr2 = this.createNormalChar(ch2, '?', fg2, bg2);
-              } else { 
+              } else {
                 var forceWidth = 0;
                 if (code == 1 || code == 2) {
                   forceWidth = this.chh;
@@ -513,7 +513,7 @@ TermView.prototype = {
           }
         }
 
-        if (this.doHighlightOnCurRow) 
+        if (this.doHighlightOnCurRow)
           tmp.push('<span type="highlight" class="b'+this.defbg+'" srow="'+row+'">');
 
         for (var j = 0; j < cols; ++j)
@@ -578,7 +578,7 @@ TermView.prototype = {
       return;
     }
 
-    if (this.useEasyReadingMode && this.buf.startedEasyReading && 
+    if (this.useEasyReadingMode && this.buf.startedEasyReading &&
         !this.buf.easyReadingShowReplyText && !this.buf.easyReadingShowPushInitText &&
         this.easyReadingKeyDownKeyCode == 229 && e.target.value != 'X') { // only use on chinese IME
       e.target.value = '';
@@ -614,7 +614,7 @@ TermView.prototype = {
     var charCode;
     this.resetCursorBlink();
 
-    if (this.useEasyReadingMode && this.buf.startedEasyReading && 
+    if (this.useEasyReadingMode && this.buf.startedEasyReading &&
         !this.buf.easyReadingShowReplyText && !this.buf.easyReadingShowPushInitText) {
       this.easyReadingOnKeyDown(e);
       return;
@@ -1076,7 +1076,7 @@ TermView.prototype = {
     }*/
 
     while (!(parentType == 'bbsrow' || parentType == 'highlight' || parent.tagName == 'A')) {
-      parent = parent.parentNode; 
+      parent = parent.parentNode;
       parentType = parent.getAttribute('type');
     }
 
@@ -1192,8 +1192,8 @@ TermView.prototype = {
             });
           }
         };
-      } else if (elem.getAttribute('href').indexOf('flickr.com/photos/') < 0) {  
-        // handle with non-photo flickr urls, such as albums or sets, and straight image links, imgur urls. 
+      } else if (elem.getAttribute('href').indexOf('flickr.com/photos/') < 0) {
+        // handle with non-photo flickr urls, such as albums or sets, and straight image links, imgur urls.
         return function(e) {
           var href = elem.getAttribute('href');
           var type = elem.getAttribute('type');
@@ -1220,7 +1220,7 @@ TermView.prototype = {
       return;
     }
     var app = this.bbscore;
-    //console.log('message from ' + this.waterball.userId + ': ' + this.waterball.message); 
+    //console.log('message from ' + this.waterball.userId + ': ' + this.waterball.message);
     var title = app.waterball.userId + ' ' + i18n('notification_said');
     if (this.titleTimer) {
       this.titleTimer.cancel();
@@ -1260,7 +1260,7 @@ TermView.prototype = {
         var rowOffset = this.buf.pageLines.length-1;
         var beginIndex = 1;
         var atLastPage = false;
-        if ((result.pageIndex == result.pageTotal && result.pagePercent == 100) || 
+        if ((result.pageIndex == result.pageTotal && result.pagePercent == 100) ||
             result.rowIndexStart != this.actualRowIndex) { // at last page
           atLastPage = result.rowIndexStart != this.actualRowIndex;
           // find num of rows between actualRowIndex and rowIndexStart
@@ -1275,7 +1275,7 @@ TermView.prototype = {
         for (var i = beginIndex; i < this.htmlRowStrArray.length-1; ++i) {
           if (i > 0 && this.buf.isTextWrappedRow(i-1)) {
             this.buf.pageWrappedLines[this.actualRowIndex] += 1;
-            // if the second row is the wrapped line from first row 
+            // if the second row is the wrapped line from first row
             if (!atLastPage && i == beginIndex) {
               beginIndex++;
             }
@@ -1327,7 +1327,7 @@ TermView.prototype = {
   },
 
   updateFbSharing: function(pttUrl) {
-    if (this.hideFbSharing) 
+    if (this.hideFbSharing)
       return;
     var self = this;
     this.fbSharingDiv.childNodes[0].setAttribute('data-href', pttUrl);
@@ -1497,7 +1497,7 @@ TermView.prototype = {
           this.buf.cancelPageDownAndResetPrevPageState();
           conn.send(']');
           break;
-        default: 
+        default:
           e.preventDefault();
           e.stopPropagation();
           break;
@@ -1699,9 +1699,9 @@ TermView.prototype = {
         return;
       } else if (e.keyCode == 97 || e.keyCode == 65) {    // ^A
         this.bbscore.doSelectAll();
-      } else if ( e.keyCode == 70 || e.keyCode == 102 ) { // ^F 
+      } else if ( e.keyCode == 70 || e.keyCode == 102 ) { // ^F
         this.mainDisplay.scrollTop += this.chh * this.easyReadingTurnPageLines;
-      } else if ( e.keyCode == 66 || e.keyCode == 98 ) {  // ^B 
+      } else if ( e.keyCode == 66 || e.keyCode == 98 ) {  // ^B
         this.mainDisplay.scrollTop -= this.chh * this.easyReadingTurnPageLines;
       } else if ( e.keyCode == 72 || e.keyCode == 104 ) { // ^H
         if (this.mainDisplay.scrollTop === 0) {
