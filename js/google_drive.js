@@ -211,9 +211,6 @@ GoogleDrive.prototype.createPicker = function(callback) {
       .setCallback(callback)
       .build();
     picker.setVisible(true);
-    // bad hack to push the picker ui's z-index to front
-    picker.A.style.zIndex = 2000;
-    picker.ib.style.zIndex = 2000;
   }, true);
 };
 
