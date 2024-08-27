@@ -273,7 +273,7 @@ locale.en_US = {
     "message": "Version"
   },
   "about_version": {
-    "message": "webapp14 5/15/2024"
+    "message": "webapp15 8/27/2024"
   },
   "about_new_title": {
     "message": "What's new"

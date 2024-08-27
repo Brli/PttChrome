@@ -270,7 +270,7 @@
     "message": "版本"
   },
   "about_version": {
-    "message": "webapp14 5/15/2024"
+    "message": "webapp15 8/27/2024"
   },
   "about_new_title": {
     "message": "新功能"
