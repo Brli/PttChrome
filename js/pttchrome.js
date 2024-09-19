@@ -41,12 +41,7 @@ pttchrome.App = function(onInitializedCallback, options) {
   this.CmdHandler.setAttribute('SkipMouseClick','0');
   this.pref = null;
 
-  var useSSH = getQueryVariable('ssh');
-  if (useSSH == 'true' || options.ssh) {
-    this.conn = new SecureShellConnection(this);
-  } else {
-    this.conn = new TelnetConnection(this);
-  }
+  this.conn = new SecureShellConnection(this);
   this.conn.keepAlive = options.keepAlive;
 
   this.view = new TermView(24);
