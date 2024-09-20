@@ -1,4 +1,4 @@
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 
 export interface Message {
   action?: string;
@@ -86,7 +86,7 @@ export class AppConnection {
       return false;
     }
 
-    return new Promise<any>((resolve, reject) => {
+    return new Promise<void>((resolve, reject) => {
       chrome.runtime.sendMessage(this.appId, { action: 'status' }, (res) => {
         if (!res) return reject();
         resolve();

@@ -2,16 +2,14 @@ const webpack = require('webpack');
 const path = require('path');
 const env = require('yargs').argv.env;
 
+const ESLintPlugin = require('eslint-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const UglifyJsPlugin=require('uglifyjs-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
+const { options } = require('yargs');
 
 const config = {
-  entry: {
-    // vender: './src/vendor',
-    main: './src/scripts/main'
-  },
+  entry: './src/scripts/main',
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: '[name].js'
@@ -21,78 +19,54 @@ const config = {
   },
   module: {
     rules: [
-      { enforce: 'pre', test: /\.ts$/, exclude: /node_modules/, loader: 'tslint-loader' },
+      // { enforce: 'pre', test: /\.ts$/, exclude: /node_modules/, loader: 'tslint-loader' },
       { test: /\.ts$/, exclude: /node_modules/, loader: 'ts-loader' },
-      { test: /\.html/, loader: 'html-loader?minimize=false' },
+      // { test: /\.json$/, loader: 'json-loader' },
+      { test: /\.html/,
+        loader: 'html-loader',
+        options: {
+          minimize: false,
+        },
+       },
       {
         test: /\.scss$/,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              esModule: true
-            },
-          },
-          'css-loader',
-          'sass-loader',
-        ]
-
+          MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'
+        ],
       },
-      { test: /\.(gif|png|jpe?g)$/i, loader: 'file-loader?name=dist/images/[name].[ext]' },
-      { test: /\.woff2?$/, loader: 'url-loader?name=dist/fonts/[name].[ext]&limit=10000&mimetype=application/font-woff' },
-      { test: /\.(ttf|eot|svg)$/, loader: 'file-loader?name=dist/fonts/[name].[ext]' }
+      { test: /\.(gif|png|jpe?g)$/i,
+        loader: 'file-loader',
+        options: {
+          name: 'dist/images/[name].[ext]',
+        },
+      },
+      { test: /\.woff2?$/,
+        loader: 'url-loader',
+        options: {
+          name: 'dist/fonts/[name].[ext]&limit=10000&mimetype=application/font-woff',
+        },
+      },
+      { test: /\.(ttf|eot|svg)$/,
+        loader: 'file-loader',
+        options:{
+          name: 'dist/fonts/[name].[ext]',
+        },
+      },
     ]
   },
   plugins: [
     new MiniCssExtractPlugin({
       filename: "styles.css",
-    })
+    }),
+    new ESLintPlugin(),
   ],
-  devServer: {
-    stats: {
-      assets: true,
-      cached: false,
-      cachedAssets: false,
-      children: false,
-      chunks: false,
-      chunkModules: true,
-      chunkOrigins: false,
-      colors: true,
-      depth: false,
-      entrypoints: false,
-      errors: true,
-      errorDetails: true,
-      hash: false,
-      maxModules: 0,
-      modules: false,
-      performance: true,
-      providedExports: false,
-      publicPath: false,
-      reasons: false,
-      source: false,
-      timings: true,
-      usedExports: false,
-      version: false,
-      warnings: true
-    }
-  },
   optimization: {
     concatenateModules: true,
-    minimize: false,
+    minimize: true,
     minimizer: [
-      new OptimizeCSSAssetsPlugin({}),
-      new UglifyJsPlugin({
-        uglifyOptions: {
-          compress: {
-          screw_ie8: true,
-          warnings: false
-        },
-          comments: false,
-          sourceMap: false
-        }
-      }),
-    ]
-  }
+      new TerserPlugin()],
+  },
+  devServer: {}
 }
 
 if (env !== 'prod') {
@@ -111,7 +85,7 @@ if (env !== 'prod') {
       patterns: [
         { from: './src/index.html' }
       ]
-    })
+    }),
   ]);
 }
 

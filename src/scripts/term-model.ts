@@ -480,7 +480,7 @@ export class TermModel {
   private queueUpdate(force?: boolean) {
     if (this.updateHandle) return;
 
-    this.updateHandle = setTimeout(() => {
+    this.updateHandle = window.setTimeout(() => {
       this.doUpdate();
     }, force ? 1 : 16); // 16 ms for 60 fps
   }
