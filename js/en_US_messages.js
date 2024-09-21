@@ -336,7 +336,7 @@ locale.en_US = {
     "message": "OR"
   },
   "alreadyInstalledHint4": {
-    "message": "Add http://iamchucky.github.io/PttChrome/ to Chrome bookmarks and launch PttChrome from the bookmark"
+    "message": "Add https://brli.github.io/PttChrome/ to Chrome bookmarks and launch PttChrome from the bookmark"
   },
 
   "input_sitePlaceholder": {
