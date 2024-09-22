@@ -1,0 +1,3 @@
+[submodule "paramikojs"]
+	path = paramikojs
+	url = https://github.com/iamchucky/paramikojs
