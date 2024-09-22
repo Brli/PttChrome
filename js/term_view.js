@@ -527,7 +527,7 @@ TermView.prototype = {
           changedLineHtmlStrs.push(changedLineHtmlStr);
           changedRows.push(row);
         }
-        this.htmlRowStrArray[row] = '<span type="bbsrow" class="'+(userid?'blu_'+userid:'')+'"'+ (shouldFade ? ' style="opacity:0.2"' : '') +' srow="'+row+'">' + changedLineHtmlStr + '</span>';
+        this.htmlRowStrArray[row] = '<span type="bbsrow" '+ (userid? 'class="blu_'+userid+'" ':'') + (shouldFade? 'style="opacity:0.2" ':'') + 'srow="'+ row+ '">'+ changedLineHtmlStr+ '</span>';
         anylineUpdate = true;
         lineChangeds[row] = false;
         lineChangedCount += 1;
