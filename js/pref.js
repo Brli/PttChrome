@@ -174,17 +174,6 @@ PttChromePref.prototype = {
       $('#modalHeader').text(i18n('options_'+currTab));
       $(this).tab('show');
     });
-
-    $('#blacklist_driveSyncTitle').text(i18n('blacklist_driveSyncTitle'));
-    $('#blacklist_driveAuthorize').text(i18n('blacklist_driveAuthorize'));
-    $('#blacklist_driveLoad').text(i18n('blacklist_driveLoad'));
-    $('#blacklist_driveSave').html(i18n('blacklist_driveSave') + '<span class="caret"></span>');
-    $('#blacklist_driveSaveNew').text(i18n('blacklist_driveSaveNew'));
-    $('#blacklist_driveSaveExisting').text(i18n('blacklist_driveSaveExisting'));
-    $('#blacklist_driveDone').text(i18n('blacklist_driveDone'));
-    $('#blacklist_driveLoading').text(i18n('blacklist_driveLoading'));
-    $('#blacklist_privacyPolicy').text(i18n('blacklist_privacyPolicy'));
-
   },
 
   populateSettingsToUi: function() {
@@ -194,15 +183,6 @@ PttChromePref.prototype = {
 
     $('#prefModal').off();
     $('#prefModal').on('show.bs.modal', function(e) {
-      var width = document.documentElement.clientWidth * 0.7;
-      width = (width > 730) ? width : 730;
-      width -= 190;
-      var height = document.documentElement.clientHeight * 0.9;
-      height = (height > 400) ? height: 400;
-      height -= 76;
-      $('#prefModal .modal-body').css('height', height + 'px');
-      $('#prefModal .modal-body').css('width', width + 'px');
-      $('#opt_blacklistedUsers').css('height', height-150 + 'px');
       self.refreshBlacklistOnUi();
     });
     $('#prefModal').on('shown.bs.modal', function(e) {

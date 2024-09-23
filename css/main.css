@@ -337,9 +337,9 @@
   position: absolute;
 }
 
-#opt_blacklistedUsers {
+/* #opt_blacklistedUsers {
   margin-top: 5px;
-}
+} */
 
 #prefModal > .modal-dialog {
   width: 70%;
@@ -349,7 +349,7 @@
   min-height: 400px;
 }
 
-#prefModal .modal-content {
+/* #prefModal .modal-content {
   height: 100%;
   cursor: default;
   -webkit-user-select: none;
@@ -361,7 +361,7 @@
   overflow-y: auto;
   margin-left: 150px;
   padding-top: 10px;
-}
+} */
 
 #prefModal h3 {
   margin-bottom: 20px;
@@ -373,7 +373,7 @@
   right: 15px;
 }
 
-#modalHeader {
+/* #modalHeader {
   top: 0px;
   left: 180px;
   position: absolute;
@@ -409,9 +409,9 @@
   padding: 5px 0px;
   color: black;
   background: none;
-}
+} */
 
-.group {
+/* .group {
   float: left;
   width: 50%;
   min-width: 400px;
@@ -430,7 +430,7 @@
 
 .list-group-item-text > div {
   margin-left: 20px;
-}
+} */
 
 #opt_mouseBrowsingHighlightColor {
   margin-left: 50px;
@@ -450,7 +450,7 @@
   background: url('../icon_128.png') 0 0/85px 85px no-repeat;
 }
 
-.font_btn {
+/* .font_btn {
   width: 85px;
   height: 85px;
   background-color: #1a1a1a;
@@ -469,7 +469,7 @@
 }
 .font_btn > span {
   font-size: 13px;
-}
+} */
 
 #BBSWindow {
   position:fixed;

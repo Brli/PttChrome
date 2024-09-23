@@ -624,15 +624,6 @@ pttchrome.App.prototype.onWindowResize = function() {
   this.view.fontResize();
 
   if (this.modalShown) {
-    var width = document.documentElement.clientWidth * 0.7;
-    width = (width > 730) ? width : 730;
-    width -= 190;
-    var height = document.documentElement.clientHeight * 0.9;
-    height = (height > 400) ? height: 400;
-    height -= 76;
-    $('#prefModal .modal-body').css('height', height + 'px');
-    $('#prefModal .modal-body').css('width', width + 'px');
-    $('#opt_blacklistedUsers').css('height', height-150 + 'px');
   }
 };
 
