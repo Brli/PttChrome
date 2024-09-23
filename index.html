@@ -61,7 +61,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-body">
-            <input type="text" class="form-control" ></input>
+            <input type="text" class="form-control"></input>
           </div>
         </div>
       </div>
@@ -69,26 +69,26 @@
 
     <!--Preferences Modal-->
     <div id="prefModal" class="modal fade" style="color:black;overflow-y:auto;z-index:2;">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-xl">
         <div class="modal-content">
-          <button type="button" class="btn-close close" data-dismiss="modal" aria-hidden="true">&times;</button>
           <div class="modal-header">
             <h3 id="opt_title">Settings</h3>
           </div>
-          <div class="modal-body container-sm">
+          <button type="button" class="btn-close close" data-dismiss="modal" aria-hidden="true"></button>
+          <div class="modal-body">
+            <div class="d-flex align-items-start" id="modalNav">
+              <!-- Nav tabs -->
+              <ul class="nav nav-pills" id="opt_tabs">
+                <li class="nav-item"><a class="nav-link" id="optNav_general" href="#tabContentGeneral" name="general" data-bs-toggle="pill">General</a></li>
+                <li class="nav-item"><a class="nav-link" id="optNav_autologin" href="#tabContentAutologin" name="autologin" data-bs-toggle="pill">Autologin</a></li>
+                <li class="nav-item"><a class="nav-link" id="optNav_blacklist" href="#tabContentBlacklist" name="blacklist" data-bs-toggle="pill">Blacklist</a></li>
+                <li class="nav-item"><a class="nav-link" id="optNav_extensions" href="#tabContentExtensions" name="extensions" data-bs-toggle="pill">Extensions</a></li>
+                <li class="nav-item"><a class="nav-link" id="optNav_about" href="#tabContentAbout" name="about" data-bs-toggle="pill">About</a></li>
+              </ul>
+            </div> <!-- End Nav tabs -->
+            <!-- Tab panes -->
             <div class="row">
-              <div class="col-8" id="modalNav">
-                <!-- Nav tabs -->
-                <ul class="nav nav-pills d-flex align-items-start col-3" id="opt_tabs">
-                  <li><a id="optNav_general" href="#tabContentGeneral" name="general" data-bs-toggle="pill">General</a></li>
-                  <li><a id="optNav_autologin" href="#tabContentAutologin" name="autologin" data-bs-toggle="pill">Autologin</a></li>
-                  <li><a id="optNav_blacklist" href="#tabContentBlacklist" name="blacklist" data-bs-toggle="pill">Blacklist</a></li>
-                  <li><a id="optNav_extensions" href="#tabContentExtensions" name="extensions" data-bs-toggle="pill">Extensions</a></li>
-                  <li><a id="optNav_about" href="#tabContentAbout" name="about" data-bs-toggle="pill">About</a></li>
-                </ul>
-              </div> <!-- End Nav tabs -->
-              <!-- Tab panes -->
-              <div class="tab-content col-sm-8">
+              <div class="tab-content">
                 <h3 id="modalHeader">General</h3>
                 <div class="tab-pane" id="tabContentGeneral">
                   <div class="row">
@@ -279,9 +279,9 @@
                       <label class="form-check-label" for="opt_enableBlacklist">啟用使用者黑名單功能</label>
                     </div>
                     <div class="form-group">
-                      <label for="alert alert-info opt_blacklistedUsers" id="opt_blacklistInstruction"></label>
+                      <label class="alert alert-info" for="opt_blacklistedUsers" id="opt_blacklistInstruction"></label>
                       <!-- blacklist item start -->
-                      <textarea class="form-control" id="opt_blacklistedUsers"></textarea>
+                      <textarea class="form-control" id="opt_blacklistedUsers" rows="25"></textarea>
                       <!-- blacklist item end -->
                     </div>
                   </div>
