@@ -89,12 +89,12 @@
             <!-- Tab panes -->
             <div class="row">
               <div class="tab-content">
-                <h3 id="modalHeader">General</h3>
+                <h3 id="modalHeader" class="modal-header">General</h3>
                 <div class="tab-pane" id="tabContentGeneral">
                   <div class="row">
                     <div class="group col-sm-8">
-                      <div class="list-group">
-                        <div class="list-group-item-text">
+                      <div class="list-group list-group-flush">
+                        <div class="list-group-item">
                           <div id="opt_openInPackagedApp" class="form-check">
                             <input class="form-check-input" type="checkbox" id="openInPackagedApp">
                             <label class="form-check-label" for="openInPackagedApp"></label>
@@ -140,8 +140,8 @@
                         </div>
                       </div>
                       <div class="list-group col">
-                        <h4 id="opt_appearance" class="list-group-item-heading"></h4>
-                        <div class="list-group-item-text">
+                        <h4 id="opt_appearance" class="list-group-item"></h4>
+                        <div class="list-group-item">
                           <div id="opt_fontFitWindowWidth" class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="fontFitWindowWidth">
                             <label class="form-check-label" for="fontFitWindowWidth"></label>
@@ -164,8 +164,8 @@
                     </div>
                     <div class="group col-sm-8">
                       <div class="list-group">
-                        <h4 id="opt_mouseBrowsing" class="list-group-item-heading"></h4>
-                        <div class="list-group-item-text">
+                        <h4 id="opt_mouseBrowsing" class="list-group-item"></h4>
+                        <div class="list-group-item">
                           <div id="opt_useMouseBrowsing" class="form-check">
                             <input class="form-check-input" type="checkbox" id="useMouseBrowsing">
                             <label class="form-check-label" for="useMouseBrowsing"></label>
@@ -240,24 +240,24 @@
                   </div>
                 </div> <!-- end tabContentGeneral -->
                 <div class="tab-pane" id="tabContentAutologin">
-                  <div class="group">
+                  <form class="group">
                     <div class="alert alert-danger" role="alert" id="opt_autologinWarning"></div>
                     <div class="list-group col">
-                      <h4 id="opt_autologin" class="list-group-item-heading" style="margin-bottom:10px;"></h4>
-                      <div class="row list-group-item-text">
+                      <h4 id="opt_autologin" class="list-group-item" style="margin-bottom:10px;"></h4>
+                      <div class="row mb-3">
                         <label class="col-auto col-form-label" for="username">帳號</label>
                         <div class="col-sm">
                           <input type="text" class="form-control" id="username">
                         </div>
                       </div>
-                      <div class="row list-group-item-text">
+                      <div class="row mb-3">
                           <label class="col-auto col-form-label" for="password">密碼</label> 
                           <div class="col-sm">
                             <input type="password" class="form-control" id="password">
                           </div>
                       </div>
-                      <fieldset class="row">
-                        <legend class="col-form-label col-auto" id="opt_enableDeleteDupLogin">刪除其他重複登入的連線？</legend>
+                      <fieldset class="row mb-3">
+                        <legend class="col-form-label col-sm-8 pt-0" id="opt_enableDeleteDupLogin">刪除其他重複登入的連線？</legend>
                         <div class="col-sm">
                           <div class="form-check">
                             <input class="form-check-input" type="radio" name="options" id="opt_deleteDupLoginYes" value="Y" checked>
@@ -270,7 +270,7 @@
                         </div>
                       </fieldset>
                     </div>
-                  </div>
+                  </form>
                 </div>
                 <div class="tab-pane" id="tabContentBlacklist">
                   <div class="col">
@@ -289,8 +289,8 @@
                 <div class="tab-pane" id="tabContentExtensions">
                   <div class="group">
                     <div class="list-group">
-                      <h4 id="ext_quickSearch" class="list-group-item-heading"></h4>
-                      <div class="list-group-item-text" style="margin-top:15px;">
+                      <h4 id="ext_quickSearch" class="list-group-item"></h4>
+                      <div class="list-group-item" style="margin-top:15px;">
                         <ul id="ext_quickSearchList" class="form-group" style="padding:0px">
                         </ul>
                       </div>
@@ -299,9 +299,9 @@
                 </div>
                 <div class="tab-pane" id="tabContentAbout">
                   <div class="list-group">
-                    <h4 class="list-group-item-heading">PttChrome <small>by <a href="mailto:yangchuck@gmail.com" target="_blank" rel="noreferrer">Chuck Yang</a></small></h4>
+                    <h4 class="list-group-item">PttChrome <small>by <a href="mailto:yangchuck@gmail.com" target="_blank" rel="noreferrer">Chuck Yang</a></small></h4>
                     <a href='https://github.com/iamchucky/PttChrome' target="_blank" rel="noreferrer">https://github.com/iamchucky/PttChrome</a>
-                    <div class="list-group-item-text" style="margin-top:10px;">
+                    <div class="list-group-item" style="margin-top:10px;">
                       <a id="about_review" href="https://chrome.google.com/webstore/detail/pttchrome/hhnlfapopmaimdlldbknjdgekpgffmbo/reviews" target="_blank" rel="noreferrer" class="btn btn-default"></a>
                       <a id="about_feedback" href="mailto:pttchrome.feedback@gmail.com" target="_blank" rel="noreferrer" class="btn btn-default"></a>
                       <a id="about_fbpage" href="https://www.facebook.com/pttchrome" target="_blank" rel="noreferrer" class="btn btn-default"></a>
@@ -312,14 +312,14 @@
                     <a href="https://chrome.google.com/webstore/detail/web2pttchrome/pjemnpgdmnlkkcpaddlnlegmdfpohnep" target="_blank" rel="noreferrer">Web2PttChrome</a>
                   </div>
                   <div class="list-group">
-                    <h4 id="about_version_title" class="list-group-item-heading"></h4>
-                    <div class="list-group-item-text">
+                    <h4 id="about_version_title" class="list-group-item"></h4>
+                    <div class="list-group-item">
                       <div id="about_version"></div>
                     </div>
                   </div>
                   <div class="list-group">
-                    <h4 id="about_new_title" class="list-group-item-heading"></h4>
-                    <div class="list-group-item-text">
+                    <h4 id="about_new_title" class="list-group-item"></h4>
+                    <div class="list-group-item">
                       <ul id="about_new">
                       </ul>
                     </div>
@@ -367,7 +367,7 @@
       <div class="modal-content">
         <div class="modal-body nomouse_command" style="height:60px;">
           <button id="liveHelperClose" type="button" class="close nomouse_command"><span>&times;</span></button>
-          <button type="button" class="btn btn-default nomouse_command" style="float:left;margin-top:-6px" data-toggle="button" id="liveHelperEnable">Enable</button>
+          <button type="button" class="btn btn-default nomouse_command" style="float:left;margin-top:-6px" data-bs-toggle="button" id="liveHelperEnable">Enable</button>
           <span id="liveHelperSpan" class="nomouse_command" style="margin-left:5px;margin-right:5px;float:left;">pushthread auto-update every</span>
           <input id="liveHelperSec" type="number" style="float:left;margin-top:-6px;width:70px;" class="form-control nomouse_command" value="1"></input>
           <span id="liveHelperSpanSec" class="nomouse_command" style="margin-left:5px;float:left;">sec</span>
@@ -386,18 +386,18 @@
         <div class="modal-body">
           <ul id="inputHelperTabTitle" class="nav nav-pills nav-justified" role="tablist">
             <li class="active" id="colorsTabTitle">
-              <a href="#colorHelperTab" role="tab" data-toggle="tab"></a>
+              <a href="#colorHelperTab" role="tab" data-bs-toggle="tab"></a>
             </li>
 
             <li class="dropdown" id="symbolsTabTitle">
-              <a class="dropdown-toggle" data-toggle="dropdown">
+              <a class="dropdown-toggle" data-bs-toggle="dropdown">
               </a>
               <ul class="dropdown-menu" role="menu">
               </ul>
             </li>
 
             <li class="dropdown" id="emoticonsTabTitle">
-              <a class="dropdown-toggle" data-toggle="dropdown">
+              <a class="dropdown-toggle" data-bs-toggle="dropdown">
               </a>
               <ul class="dropdown-menu" role="menu">
               </ul>
@@ -432,7 +432,7 @@
               </div>
               <div class="btn-group dropdown" style="float:right">
                 <button id="colorHelperSend" type="button" class="btn btn-default">Send</button>
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <button type="button" class="btn btn-default dropdown-toggle" data-bs-toggle="dropdown">
                   <span class="caret"></span>
                 </button>
                 <ul id="colorHelperSendMenu" class="dropdown-menu" role="menu">

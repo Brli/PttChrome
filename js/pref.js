@@ -87,18 +87,18 @@ PttChromePref.prototype = {
 
       var popoverTooltips = '';
       if (i == 'fontFace' || i == 'antiIdleTime') {
-        popoverTooltips = ' data-toggle="popover" data-trigger="focus" data-content="'+i18n('tooltip_'+i)+'"';
+        popoverTooltips = ' data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="'+i18n('tooltip_'+i)+'"';
       }
 
       switch(typeof(val)) {
         case 'number':
           $('#opt_'+i).html(
-            '<label style="font-weight:normal;">'+i18n('options_'+i)+'</label>'+
+            '<label>'+i18n('options_'+i)+'</label>'+
             '<input type="number" class="form-control" value="'+val+'"'+popoverTooltips+'>');
           break;
         case 'string':
           $('#opt_'+i).html(
-            '<label style="font-weight:normal;">'+i18n('options_'+i)+'</label>'+
+            '<label>'+i18n('options_'+i)+'</label>'+
             '<input type="text" class="form-control" value="'+val+'"'+popoverTooltips+'>');
           break;
         case 'boolean':
@@ -117,11 +117,11 @@ PttChromePref.prototype = {
 
     // autologin
     $('#login_username').html(
-      '<label style="font-weight:normal;">'+i18n('autologin_username')+'</label>'+
+      '<label>'+i18n('autologin_username')+'</label>'+
       '<input type="text" class="form-control">');
     $('#login_password').html(
-      '<label style="font-weight:normal;">'+i18n('autologin_password')+'</label>'+
-      '<input type="text" class="form-control" style="text-security:disc; -webkit-text-security:disc;">');
+      '<label>'+i18n('autologin_password')+'</label>'+
+      '<input type="password" class="form-control">');
     $('#login_username > input').val(this.logins[0]);
     $('#login_password > input').val(this.logins[1]);
   },
