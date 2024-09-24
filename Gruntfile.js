@@ -86,6 +86,7 @@ module.exports = function(grunt) {
         ],
       options: {
         // options here to override JSHint defaults
+        multistr: true,
         shadow: true,
         esnext: true,
         globals: {

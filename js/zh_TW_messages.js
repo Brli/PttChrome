@@ -118,7 +118,7 @@
     "message": "選取文字時自動複製文字"
   },
   "options_enableDeleteDupLogin": {
-    "message": "當被問到是否刪除其他重複登入的連線，回答:"
+    "message": "是否刪除其他重複登入的連線？"
   },
   "options_preferences": {
     "message": "設定"
@@ -240,17 +240,6 @@
   },
   "blacklist_privacyPolicy": {
     "message": "隱私權政策"
-  },
-
-  // extensions
-  "ext_quickSearch": {
-    "message": "快速搜尋"
-  },
-  "ext_addQuickSearchNamePlaceholder": {
-    "message": "新增搜尋引擎"
-  },
-  "ext_addQuickSearchQueryPlaceholder": {
-    "message": "網址以 %s 取代網址中的搜尋字詞"
   },
 
   // about page
