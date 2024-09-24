@@ -34,9 +34,6 @@ var DEFAULT_PREFS = {
   // blacklist
   enableBlacklist : false,
   blacklistedUserIds  : '{}',
-
-  // quickSearch
-  quickSearchList: '[{"name":"goo.gl","url":"http://goo.gl/%s"}]'
 };
 
 var PREF_OPTIONS = {

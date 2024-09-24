@@ -15,11 +15,11 @@
     <script type="text/javascript" src="js/paramikojs_ssh.min.js"></script>
     <script type="text/javascript" src="https://hammerjs.github.io/dist/hammer.min.js"></script>
     <script type="text/javascript" src="js/pttchrome.min.js"></script>
-<!--   <script type="text/javascript">
-      if (window.location.protocol != "https:") {
-        window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
-      }
-    </script>-->
+    <script type="text/javascript">
+        if (window.location.protocol != "https:") {
+          window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
+        }
+      </script>
   </head>
 
   <body>
@@ -87,8 +87,8 @@
                 <h3 id="modalHeader" class="modal-header">General</h3>
                 <div class="tab-pane" id="tabContentGeneral">
                   <div class="row">
-                    <div class="group col-sm-8">
-                      <div class="list-group list-group-flush">
+                    <div class="group">
+                      <div class="list-group col">
                         <div class="list-group-item">
                           <div id="opt_openInPackagedApp" class="form-check">
                             <input class="form-check-input" type="checkbox" id="openInPackagedApp">
@@ -240,13 +240,13 @@
                     <div class="list-group col">
                       <div class="list-group-item">
                         <div class="row mb-3">
-                          <label class="col-auto col-form-label" for="username">帳號</label>
+                          <label class="col-auto col-form-label" for="username" id="login_username"></label>
                           <div class="col-sm">
                             <input type="text" class="form-control" id="username">
                           </div>
                         </div>
                         <div class="row mb-3">
-                            <label class="col-auto col-form-label" for="password">密碼</label> 
+                            <label class="col-auto col-form-label" for="password" id="login_password"></label>
                             <div class="col-sm">
                               <input type="password" class="form-control" id="password">
                             </div>

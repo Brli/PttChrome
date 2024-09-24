@@ -125,13 +125,11 @@ PttChromePref.prototype = {
 
     // autologin
     $('#login_username').html(
-      '<label>'+i18n('autologin_username')+'</label>'+
-      '<input type="text" class="form-control">');
+      i18n('autologin_username'));
     $('#login_password').html(
-      '<label>'+i18n('autologin_password')+'</label>'+
-      '<input type="password" class="form-control">');
-    $('#login_username > input').val(this.logins[0]);
-    $('#login_password > input').val(this.logins[1]);
+      i18n('autologin_password'));
+    $('#username').val(this.logins[0]);
+    $('#password').val(this.logins[1]);
   },
 
   setupSettingsUi: function() {
@@ -305,8 +303,8 @@ PttChromePref.prototype = {
           break;
       }
     }
-    var user = $('#login_username input').val();
-    var pswd = $('#login_password input').val();
+    var user = $('#username').val();
+    var pswd = $('#password').val();
     if (user === '') {
       pswd = '';
     }
