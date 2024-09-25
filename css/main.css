@@ -161,14 +161,14 @@
 }
 
 #welcomeBannerPtt {
-  display: inline-block;
+  display: block;
   float: left;
   font-size: 90px;
   font-weight: 900;
   margin-top: -30px;
 }
 #welcomeBannerChrome {
-  display: inline-block;
+  display: block;
   float: left;
   font-size: 90px;
   width: 350px;
@@ -235,51 +235,12 @@
 .dropdown-menu li > a:hover,
 .dropdown-menu li > a:focus {
   color: white;
-  background-color: #428bca;
+  background-color: #0d6efd;
 }
 
 .dropdown-menu li > a:hover span,
 .dropdown-menu li > a:focus span {
   color: white;
-}
-
-#cmenu_quickSearch {
-  position: relative;
-}
-.cmenuGoesUp {
-  top: initial !important;
-  bottom: 0px;
-  margin-top: 0px !important;
-  margin-bottom: -5px;
-}
-.cmenuGoesLeft {
-  right: 100%;
-  left: initial !important;
-  margin-left: 0px !important;
-  margin-right: -5px;
-}
-
-#quickSearchMenus {
-  left: 100%;
-  top: 0px;
-  margin-top: -5px;
-  margin-left: -5px;
-}
-
-#cmenu_quickSearch > ul {
-  display: none;
-}
-#cmenu_quickSearch:hover > ul {
-  display: block;
-}
-
-.cmenuHotkey {
-  float: right;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.42857143;
-  color: #aaa;
-  margin-left: 15px;
 }
 
 #opt_reset {
@@ -617,7 +578,7 @@ span {
   -webkit-animation: spin .7s infinite linear;
 }
 
-@-webkit-keyframes spin {
+@keyframes spin {
   from { -webkit-transform: rotate(0deg); }
   to { -webkit-transform: rotate(360deg); }
 }

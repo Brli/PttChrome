@@ -561,10 +561,6 @@ pttchrome.App.prototype.doSelectAll = function() {
   window.getSelection().selectAllChildren(this.view.mainDisplay);
 };
 
-pttchrome.App.prototype.doSearchGoogle = function(searchTerm) {
-  window.open('http://google.com/search?q='+searchTerm);
-};
-
 pttchrome.App.prototype.doOpenUrlNewTab = function(a) {
   var e = document.createEvent('MouseEvents');
   e.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, true, false, false, false, 0, null);
@@ -1491,15 +1487,6 @@ pttchrome.App.prototype.setupContextMenus = function() {
         $('.contextUrl').hide();
         $('.contextSel').hide();
         $('.contextNormal').show();
-      } else {
-        // got something selected, show copy and searchGoogle
-        $('.contextUrl').hide();
-        $('.contextSel').show();
-        $('.contextNormal').hide();
-        var clipedText = selectedText;
-        if (clipedText.length > 15) {
-          clipedText = clipedText.substr(0, 15) + ' ... ';
-        }
       }
     }
 
@@ -1584,10 +1571,6 @@ pttchrome.App.prototype.setupContextMenus = function() {
           self.doPaste();
           hideContextMenu();
           break;
-        case 83: // S
-          self.doSearchGoogle(selectedText);
-          hideContextMenu();
-          break;
         case 84: // T
           self.doOpenUrlNewTab(aElement);
           hideContextMenu();
@@ -1616,7 +1599,6 @@ pttchrome.App.prototype.setupContextMenus = function() {
   $('#cmenu_copyAnsi a').text(i18n('cmenu_copyAnsi'));
   $('#cmenu_paste a').html(i18n('cmenu_paste')+'<span class="cmenuHotkey">Ctrl+Shift+V</span>');
   $('#cmenu_selectAll a').html(i18n('cmenu_selectAll')+'<span class="cmenuHotkey">Ctrl+A</span>');
-  $('#cmenu_searchGoogle a').html(i18n('cmenu_searchGoogle')+' <span id="cmenuSearchContent"></span>');
   $('#cmenu_openUrlNewTab a').text(i18n('cmenu_openUrlNewTab'));
   $('#cmenu_copyLinkUrl a').text(i18n('cmenu_copyLinkUrl'));
   $('#cmenu_mouseBrowsing a').text(i18n('cmenu_mouseBrowsing'));
@@ -1639,9 +1621,6 @@ pttchrome.App.prototype.setupContextMenus = function() {
     },
     'cmenu_selectAll': function() { 
       self.doSelectAll(); 
-    },
-    'cmenu_searchGoogle': function() { 
-      self.doSearchGoogle(selectedText); 
     },
     'cmenu_openUrlNewTab': function() { 
       self.doOpenUrlNewTab(aElement); 
