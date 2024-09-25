@@ -7,5 +7,6 @@
     "grunt-contrib-cssmin": "5.0.0",
     "grunt-contrib-jshint": "3.2.0",
     "grunt-contrib-uglify": "5.2.2"
-  }
+  },
+  "packageManager": "yarn@4.5.0"
 }
