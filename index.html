@@ -15,11 +15,6 @@
     <script type="text/javascript" src="js/paramikojs_ssh.min.js"></script>
     <script type="text/javascript" src="https://hammerjs.github.io/dist/hammer.min.js"></script>
     <script type="text/javascript" src="js/pttchrome.min.js"></script>
-    <script type="text/javascript">
-        if (window.location.protocol != "https:") {
-          window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
-        }
-      </script>
   </head>
 
   <body>
@@ -68,7 +63,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h3 id="opt_title">Settings</h3>
-            <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-hidden="true"></button>
+            <button type="button" class="btn btn-close close" data-bs-dismiss="modal" aria-hidden="true"></button>
           </div>
           <div class="modal-body">
             <div class="d-flex align-items-start" id="modalNav">
@@ -262,7 +257,7 @@
                               <label class="form-check-label" for="opt_deleteDupLoginNo">N</label>
                             </div>
                           </div>
-                        </fieldset>  
+                        </fieldset>
                       </div>
                     </div>
                   </form>
@@ -319,7 +314,7 @@
       </div>
     </div>
     <div id="connectionAlert" class="alert alert-danger alert-dismissable fade in">
-      <button type="button" class="close" data-bs-dismiss="alert" aria-hidden="true">&times;</button>
+      <button type="button" class="btn btn-close close" data-bs-dismiss="alert" aria-hidden="true"></button>
       <h4 id="connectionAlertHeader"></h4>
       <p id="connectionAlertText"></p>
       <p>
@@ -347,92 +342,105 @@
     <img id="picPreview" src='' style='max-height:80%; max-width:90%'></img>
     <i id="picLoading" class="glyphicon glyphicon-refresh glyphicon-refresh-animate" style="display:none; position:absolute; z-index:2"></i>
 
-    <div id="liveHelper" class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-body nomouse_command" style="height:60px;">
-          <button id="liveHelperClose" type="button" class="close nomouse_command"><span>&times;</span></button>
-          <button type="button" class="btn btn-default nomouse_command" style="float:left;margin-top:-6px" data-bs-toggle="button" id="liveHelperEnable">Enable</button>
-          <span id="liveHelperSpan" class="nomouse_command" style="margin-left:5px;margin-right:5px;float:left;">pushthread auto-update every</span>
-          <input id="liveHelperSec" type="number" style="float:left;margin-top:-6px;width:70px;" class="form-control nomouse_command" value="1"></input>
-          <span id="liveHelperSpanSec" class="nomouse_command" style="margin-left:5px;float:left;">sec</span>
+    <!-- start live helper-->
+    <div class="modal" id="liveHelper">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4>Live Article Helper</h3>
+            <button id="liveHelperClose" type="button" class="btn btn-close close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <div class="form-group row align-items-center">
+                <label id="liveHelperSpan" class="col-auto">pushthread auto-update every</label>
+                <div class="input-group col">
+                  <input id="liveHelperSec" type="number" class="form-control" value="1"></input>
+                  <span id="liveHelperSpanSec" class="input-group-text col-auto">sec</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary align-items-right" data-bs-toggle="button" id="liveHelperEnable">Enable</button>
+          </div>
         </div>
       </div>
     </div>
 
-    <div id="inputHelper" class="modal-dialog">
-      <div class="modal-content">
-
-        <div class="modal-header">
-          <button id="inputHelperClose" type="button" class="close"><span>&times;</span></button>
-          <h4 class="modal-title">Modal title</h4>
-        </div>
-
-        <div class="modal-body">
-          <ul id="inputHelperTabTitle" class="nav nav-pills nav-justified" role="tablist">
-            <li class="active" id="colorsTabTitle">
-              <a href="#colorHelperTab" role="tab" data-bs-toggle="tab"></a>
-            </li>
-
-            <li class="dropdown" id="symbolsTabTitle">
-              <a class="dropdown-toggle" data-bs-toggle="dropdown">
-              </a>
-              <ul class="dropdown-menu" role="menu">
-              </ul>
-            </li>
-
-            <li class="dropdown" id="emoticonsTabTitle">
-              <a class="dropdown-toggle" data-bs-toggle="dropdown">
-              </a>
-              <ul class="dropdown-menu" role="menu">
-              </ul>
-            </li>
-
-          </ul>
-
-          <div id="inputHelperTabContent" class="tab-content">
-            <div id="colorHelperTab" class="tab-pane active" style="height:166px;">
-              <ul id="colorHelperList">
-                <li style="background-color:black" value="0"></li>
-                <li class="b1" value="1"></li>
-                <li class="b2" value="2"></li>
-                <li class="b3" value="3"></li>
-                <li class="b4" value="4"></li>
-                <li class="b5" value="5"></li>
-                <li class="b6" value="6"></li>
-                <li class="b7" value="7"></li>
-                <li class="b8" value="8"></li>
-                <li class="b9" value="9"></li>
-                <li class="b10" value="10"></li>
-                <li class="b11" value="11"></li>
-                <li class="b12" value="12"></li>
-                <li class="b13" value="13"></li>
-                <li class="b14" value="14"></li>
-                <li class="b15" value="15"></li>
-              </ul>
-              <div style="color:#c0c0c0; background-color:black; height:38px; margin-bottom:10px; padding-top:8px;">
-                <span id="colorHelperPreview" class="q7 b0">▅ PREVIEW ▅</span>
-              </div>
-              <div id="colorHelperBlink" class="checkbox">
-              </div>
-              <div class="btn-group dropdown" style="float:right">
-                <button id="colorHelperSend" type="button" class="btn btn-default">Send</button>
-                <button type="button" class="btn btn-default dropdown-toggle" data-bs-toggle="dropdown">
-                  <span class="caret"></span>
-                </button>
-                <ul id="colorHelperSendMenu" class="dropdown-menu" role="menu">
-                  <li><a id="colorHelperSendMenuFore" type="foreground">Send foreground only</a></li>
-                  <li><a id="colorHelperSendMenuBack" type="background">Send background only</a></li>
-                  <li class="divider"></li>
-                  <li><a id="colorHelperSendMenuReset" type="reset">Send reset code</a></li>
-                </ul>
-              </div>
-            </div>
+    <!-- start input helper-->
+    <div class="modal" id="inputHelper">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Modal title</h4>
+            <button id="inputHelperClose" type="button" class="btn btn-close close"></button>
           </div>
 
+          <div class="modal-body">
+            <ul id="inputHelperTabTitle" class="nav nav-pills nav-justified" role="tablist">
+              <li class="active" id="colorsTabTitle">
+                <a href="#colorHelperTab" role="tab" data-bs-toggle="tab"></a>
+              </li>
 
-        </div> <!-- /.modal-body-->
+              <li class="dropdown" id="symbolsTabTitle">
+                <a class="dropdown-toggle dropdown-item" data-bs-toggle="dropdown">
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                </ul>
+              </li>
 
-      </div> <!-- /.modal-content -->
-    </div> <!-- /.modal-dialog -->
+              <li class="dropdown" id="emoticonsTabTitle">
+                <a class="dropdown-toggle dropdown-item" data-bs-toggle="dropdown">
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                </ul>
+              </li>
+
+            </ul>
+
+            <div id="inputHelperTabContent" class="tab-content">
+              <div id="colorHelperTab" class="tab-pane active" style="height:166px;">
+                <ul id="colorHelperList">
+                  <li style="background-color:black" value="0"></li>
+                  <li class="b1" value="1"></li>
+                  <li class="b2" value="2"></li>
+                  <li class="b3" value="3"></li>
+                  <li class="b4" value="4"></li>
+                  <li class="b5" value="5"></li>
+                  <li class="b6" value="6"></li>
+                  <li class="b7" value="7"></li>
+                  <li class="b8" value="8"></li>
+                  <li class="b9" value="9"></li>
+                  <li class="b10" value="10"></li>
+                  <li class="b11" value="11"></li>
+                  <li class="b12" value="12"></li>
+                  <li class="b13" value="13"></li>
+                  <li class="b14" value="14"></li>
+                  <li class="b15" value="15"></li>
+                </ul>
+                <div style="color:#c0c0c0; background-color:black; height:38px; margin-bottom:10px; padding-top:8px;">
+                  <span id="colorHelperPreview" class="q7 b0">▅ PREVIEW ▅</span>
+                </div>
+                <div id="colorHelperBlink" class="checkbox">
+                </div>
+                <div class="btn-group dropdown" style="float:right">
+                  <button id="colorHelperSend" type="button" class="btn btn-default">Send</button>
+                  <button type="button" class="btn btn-default dropdown-toggle" data-bs-toggle="dropdown">
+                    <span class="caret"></span>
+                  </button>
+                  <ul id="colorHelperSendMenu" class="dropdown-menu" role="menu">
+                    <li><a id="colorHelperSendMenuFore" type="foreground">Send foreground only</a></li>
+                    <li><a id="colorHelperSendMenuBack" type="background">Send background only</a></li>
+                    <li class="dropdown-divider"></li>
+                    <li><a id="colorHelperSendMenuReset" type="reset">Send reset code</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div> <!-- /.modal-body-->
+        </div> <!-- /.modal-content -->
+      </div> <!-- /.modal-dialog -->
+    </div> <!-- end input helper -->
   </body>
 </html>
