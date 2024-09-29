@@ -6,11 +6,12 @@
 
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" type="text/css" href="css/main.css" />
     <link rel="stylesheet" type="text/css" href="css/color.css" />
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="js/paramikojs_ssh.min.js"></script>
     <script type="text/javascript" src="https://hammerjs.github.io/dist/hammer.min.js"></script>
     <script type="text/javascript" src="js/pttchrome.js"></script>
@@ -38,27 +39,21 @@
 
   <body>
     <ul id="contextMenus" class="dropdown-menu" role="menu" style="display:none">
-      <li id="cmenu_copy" class="cmenuItem contextSel"><a></a></li>
-      <li id="cmenu_copyAnsi" class="cmenuItem contextSel"><a></a></li>
-      <li id="cmenu_paste" class="cmenuItem contextNormal"><a></a></li>
-      <li id="cmenu_searchGoogle" class="cmenuItem contextSel"><a></a></li>
-      <li id="cmenu_openUrlNewTab" class="cmenuItem contextUrl"><a></a></li>
-      <li id="cmenu_copyLinkUrl" class="cmenuItem contextUrl"><a></a></li>
-      <li id="cmenu_divider1" class="divider"></li>
-      <li id="cmenu_quickSearch" class="cmenuItem contextQuickSearch"><a></a>
-        <ul id="quickSearchMenus" class="dropdown-menu" role="menu">
-        </ul>
-      </li>
-      <li id="cmenu_divider2" class="divider contextQuickSearch"></li>
-      <li id="cmenu_selectAll" class="cmenuItem contextNormal"><a></a></li>
-      <li id="cmenu_mouseBrowsing" class="cmenuItem contextNormal"><a></a></li>
-      <li id="cmenu_goToOtherSite" class="cmenuItem contextNormal"><a></a></li>
-      <li id="cmenu_showInputHelper" class="cmenuItem contextNormal"><a></a></li>
-      <li id="cmenu_showLiveArticleHelper" class="cmenuItem contextNormal"><a></a></li>
-      <li id="cmenu_addBlacklistUserId" class="cmenuItem"><a></a></li>
-      <li id="cmenu_removeBlacklistUserId" class="cmenuItem"><a></a></li>
-      <li id="cmenu_divider3" class="divider contextNormal"></li>
-      <li id="cmenu_settings" class="cmenuItem"><a></a></li>
+      <li id="cmenu_copy" class="cmenuItem contextSel"><a class="dropdown-item"></a></li>
+      <li id="cmenu_copyAnsi" class="cmenuItem contextSel"><a class="dropdown-item"></a></li>
+      <li id="cmenu_paste" class="cmenuItem contextNormal"><a class="dropdown-item"></a></li>
+      <li id="cmenu_openUrlNewTab" class="cmenuItem contextUrl"><a class="dropdown-item"></a></li>
+      <li id="cmenu_copyLinkUrl" class="cmenuItem contextUrl"><a class="dropdown-item"></a></li>
+      <li id="cmenu_divider1" class="dropdown-divider"></li>
+      <li id="cmenu_selectAll" class="cmenuItem contextNormal"><a class="dropdown-item"></a></li>
+      <li id="cmenu_mouseBrowsing" class="cmenuItem contextNormal"><a class="dropdown-item"></a></li>
+      <li id="cmenu_goToOtherSite" class="cmenuItem contextNormal"><a class="dropdown-item"></a></li>
+      <li id="cmenu_showInputHelper" class="cmenuItem contextNormal"><a class="dropdown-item"></a></li>
+      <li id="cmenu_showLiveArticleHelper" class="cmenuItem contextNormal"><a class="dropdown-item"></a></li>
+      <li id="cmenu_addBlacklistUserId" class="cmenuItem"><a class="dropdown-item"></a></li>
+      <li id="cmenu_removeBlacklistUserId" class="cmenuItem"><a class="dropdown-item"></a></li>
+      <li id="cmenu_divider3" class="dropdown-divider contextNormal"></li>
+      <li id="cmenu_settings" class="cmenuItem"><a class="dropdown-item"></a></li>
     </ul>
 
     <div id="BBSWindow" style="display:none">
@@ -76,7 +71,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-body">
-            <input type="text" class="form-control" ></input>
+            <input type="text" class="form-control"></input>
           </div>
         </div>
       </div>
@@ -84,175 +79,266 @@
 
     <!--Preferences Modal-->
     <div id="prefModal" class="modal fade" style="color:black;overflow-y:auto;z-index:2;">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-xl">
         <div class="modal-content">
-          <div id="modalNav">
+          <div class="modal-header">
             <h3 id="opt_title">Settings</h3>
-
-            <!-- Nav tabs -->
-            <ul class="nav nav-pills nav-stacked" id="opt_tabs">
-              <li><a id="optNav_general" href="#tabContentGeneral" name="general" data-toggle="pill">General</a></li>
-              <li><a id="optNav_autologin" href="#tabContentAutologin" name="autologin" data-toggle="pill">Auto login</a></li>
-              <li><a id="optNav_blacklist" href="#tabContentBlacklist" name="blacklist" data-toggle="pill">Blacklist</a></li>
-              <li><a id="optNav_extensions" href="#tabContentExtensions" name="extensions" data-toggle="pill">Extensions</a></li>
-              <li><a id="optNav_about" href="#tabContentAbout" name="about" data-toggle="pill">About</a></li>
-            </ul>
-
-            <button id="opt_reset" type="button" class="btn btn-default"></button>
+            <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-hidden="true"></button>
           </div>
-          <h3 id="modalHeader">General</h3>
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           <div class="modal-body">
-
+            <div class="d-flex align-items-start" id="modalNav">
+              <!-- Nav tabs -->
+              <ul class="nav nav-pills" id="opt_tabs">
+                <li class="nav-item"><a class="nav-link" id="optNav_general" href="#tabContentGeneral" name="general" data-bs-toggle="pill">General</a></li>
+                <li class="nav-item"><a class="nav-link" id="optNav_autologin" href="#tabContentAutologin" name="autologin" data-bs-toggle="pill">Autologin</a></li>
+                <li class="nav-item"><a class="nav-link" id="optNav_blacklist" href="#tabContentBlacklist" name="blacklist" data-bs-toggle="pill">Blacklist</a></li>
+                <li class="nav-item"><a class="nav-link" id="optNav_about" href="#tabContentAbout" name="about" data-bs-toggle="pill">About</a></li>
+              </ul>
+            </div> <!-- End Nav tabs -->
             <!-- Tab panes -->
-            <div class="tab-content">
-
-              <div class="tab-pane" id="tabContentGeneral">
-                <div class="group">
-                  <div class="list-group">
-                    <div class="list-group-item-text">
-                      <div id="opt_openInPackagedApp" class="checkbox">
+            <div class="row">
+              <div class="tab-content">
+                <h3 id="modalHeader" class="modal-header">General</h3>
+                <div class="tab-pane" id="tabContentGeneral">
+                  <div class="row">
+                    <div class="group">
+                      <div class="list-group col">
+                        <div class="list-group-item">
+                          <div id="opt_openInPackagedApp" class="form-check">
+                            <input class="form-check-input" type="checkbox" id="openInPackagedApp">
+                            <label class="form-check-label" for="openInPackagedApp"></label>
+                          </div>
+                          <div id="opt_closeQuery" class="form-check">
+                            <input class="form-check-input" type="checkbox" id="closeQuery">
+                            <label class="form-check-label" for="closeQuery"></label>
+                          </div>
+                          <div id="opt_enablePicPreview" class="form-check">
+                            <input class="form-check-input" type="checkbox" id="enablePicPreview">
+                            <label class="form-check-label" for="enablePicPreview"></label>
+                          </div>
+                          <div id="opt_enableNotifications" class="form-check">
+                            <input class="form-check-input" type="checkbox" id="enableNotifications">
+                            <label class="form-check-label" for="enableNotifications"></label>
+                          </div>
+                          <div id="opt_enableEasyReading" class="form-check">
+                            <input class="form-check-input" type="checkbox" id="enableNotifications">
+                            <label class="form-check-label" for="enableNotifications"></label>
+                          </div>
+                          <div id="opt_endTurnsOnLiveUpdate" class="form-check">
+                            <input class="form-check-input" type="checkbox" id="endTurnsOnLiveUpdate">
+                            <label class="form-check-label" for="endTurnsOnLiveUpdate"></label>
+                          </div>
+                          <div id="opt_copyOnSelect" class="form-check">
+                            <input class="form-check-input" type="checkbox" id="copyOnSelect">
+                            <label class="form-check-label" for="copyOnSelect"></label>
+                          </div>
+                          <div id="opt_antiIdleTime" class="form-group row">
+                            <label for="antiIdleTime" class="col-auto col-form-label"></label>
+                            <div class="col-md input-group">
+                              <input class="form-control" type="number" value="0" id="antiIdleTime">
+                              <span class="input-group-text">秒</span>
+                            </div>
+                          </div>
+                          <div id="opt_lineWrap" class="form-group row">
+                            <label for="lineWarp" class="col-auto col-form-label"></label>
+                            <div class="col-sm input-group">
+                              <input class="form-control" type="number" value="78" id="lineWarp">
+                              <span class="input-group-text">字元</span>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <div id="opt_closeQuery" class="checkbox">
-                      </div>
-                      <div id="opt_enablePicPreview" class="checkbox">
-                      </div>
-                      <div id="opt_enableNotifications" class="checkbox">
-                      </div>
-                      <div id="opt_enableEasyReading" class="checkbox">
-                      </div>
-                      <div id="opt_endTurnsOnLiveUpdate" class="checkbox">
-                      </div>
-                      <div id="opt_copyOnSelect" class="checkbox">
-                      </div>
-                      <div id="opt_antiIdleTime" class="form-group">
-                      </div>
-                      <div id="opt_lineWrap" class="form-group">
-                      </div>
+                      <div class="list-group col">
+                        <h4 id="opt_appearance" class="list-group-item"></h4>
+                        <div class="list-group-item">
+                          <div id="opt_fontFitWindowWidth" class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="fontFitWindowWidth">
+                            <label class="form-check-label" for="fontFitWindowWidth"></label>
+                          </div>
+                          <div id="opt_fontFace" class="form-group row">
+                            <label for="fontFace" class="col-auto col-form-label">字型</label>
+                            <div class="col-sm">
+                              <input class="form-control" type="text" value="華康儷中黑,MingLiu,SymMingLiU,monospace" id="fontFace">
+                            </div>
+                          </div>
+                          <div id="opt_bbsMargin" class="form-group row">
+                            <label for="bbsMargin" class="col-auto col-form-label"></label>
+                            <div class="col-sm input-group">
+                              <input class="form-control" type="number" value="0" id="bbsMargin" placeholder="">
+                              <span class="input-group-text">px</span>
+                            </div>
+                          </div> <!-- end bbsMargin-->
+                        </div> <!-- end appearance list-group-items -->
+                      </div> <!-- end appearance list-group -->
+                    </div>
+                    <div class="group col-sm-8">
+                      <div class="list-group">
+                        <h4 id="opt_mouseBrowsing" class="list-group-item"></h4>
+                        <div class="list-group-item">
+                          <div id="opt_useMouseBrowsing" class="form-check">
+                            <input class="form-check-input" type="checkbox" id="useMouseBrowsing">
+                            <label class="form-check-label" for="useMouseBrowsing"></label>
+                          </div>
+                          <div id="opt_mouseBrowsingHighlight" class="form-check">
+                            <input class="form-check-input" type="checkbox" id="mouseBrowsingHighligh">
+                            <label class="form-check-label" for="mouseBrowsingHighligh"></label>
+                          </div>
+                          <div id="opt_mouseBrowsingHighlightColor" class="row">
+                            <label class="form-label col-auto col-form-label" for="mouseBrowsingHighlightColor"></label>
+                            <div class="col-sm">
+                              <input class="form-control form-control-color" type="color" value="#008000" id="mouseBrowsingHighlightColor">
+                            </div>
+                          </div>
+                          <div id="opt_mouseLeftFunction" class="row">
+                            <label class="col-auto col-form-label" for="mouseLeftFunction"></label>
+                            <div class="col-sm">
+                              <select class="form-select" id="mouseLeftFunction">
+                                <option value="0"></option>
+                                <option value="1"></option>
+                                <option value="2"></option>
+                              </select>
+                            </div>
+                          </div>
+                          <div id="opt_mouseMiddleFunction" class="row">
+                            <label class="col-auto col-form-label" for="mouseMiddleFunction"></label>
+                            <div class="col-sm">
+                              <select class="form-select" id="mouseMiddleFunction">
+                                <option value="0"></option>
+                                <option value="1"></option>
+                                <option value="2"></option>
+                                <option value="3"></option>
+                              </select>
+                            </div>
+                          </div>
+                          <div id="opt_mouseWheelFunction1" class="row">
+                            <label class="col-auto col-form-label" for="mouseWheelFunction1">滑鼠滾輪</label>
+                            <div class="col-sm">
+                              <select class="form-select" id="mouseWheelFunction1">
+                                <option value="0"></option>
+                                <option value="1"></option>
+                                <option value="2"></option>
+                                <option value="3"></option>
+                              </select>
+                            </div>
+                          </div>
+                          <div id="opt_mouseWheelFunction2" class="row">
+                            <label class="col-auto col-form-label" for="mouseWheelFunction2">滑鼠右鍵 + 滑鼠滾輪</label>
+                            <div class="col-sm">
+                              <select class="form-select" id="mouseWheelFunction2">
+                                <option value="0"></option>
+                                <option value="1">控制上 / 下</option>
+                                <option value="2">控制上頁 / 下頁</option>
+                                <option value="3">控制文章前篇 / 下篇</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div id="opt_mouseWheelFunction3" class="row">
+                            <label class="col-auto col-form-label" for="mouseWheelFunction3">滑鼠右鍵 + 滑鼠滾輪</label>
+                            <div class="col-sm">
+                              <select class="form-select" id="mouseWheelFunction3">
+                                <option value="0">無動作</option>
+                                <option value="1">控制上 / 下</option>
+                                <option value="2">控制上頁 / 下頁</option>
+                                <option value="3">控制文章前篇 / 下篇</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </div> <!-- end mouse browsing list-group-->
                     </div>
                   </div>
-                  <div class="list-group">
-                    <h4 id="opt_appearance" class="list-group-item-heading"></h4>
-                    <div class="list-group-item-text">
-                      <div id="opt_fontFitWindowWidth" class="checkbox">
+                </div> <!-- end tabContentGeneral -->
+                <div class="tab-pane" id="tabContentAutologin">
+                  <form class="group">
+                    <div class="alert alert-danger" role="alert" id="opt_autologinWarning"></div>
+                    <div class="list-group col">
+                      <div class="list-group-item">
+                        <div class="row mb-3">
+                          <label class="col-auto col-form-label" for="username" id="login_username"></label>
+                          <div class="col-sm">
+                            <input type="text" class="form-control" id="username">
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="col-auto col-form-label" for="password" id="login_password"></label>
+                            <div class="col-sm">
+                              <input type="password" class="form-control" id="password">
+                            </div>
+                        </div>
+                        <fieldset class="row mb-3">
+                          <legend class="col-form-label col-sm-8 pt-0" id="opt_enableDeleteDupLogin"></legend>
+                          <div class="col-sm">
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="options" id="opt_deleteDupLoginYes" value="Y" checked>
+                              <label class="form-check-label" for="opt_deleteDupLoginYes">Y</label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="options" id="opt_deleteDupLoginNo" value="N">
+                              <label class="form-check-label" for="opt_deleteDupLoginNo">N</label>
+                            </div>
+                          </div>
+                        </fieldset>
                       </div>
-                      <div id="opt_fontFace" class="form-group">
-                      </div>
-                      <div id="opt_bbsMargin" class="form-group">
-                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="tab-pane" id="tabContentBlacklist">
+                  <div class="col m-3">
+                    <div id="opt_enableBlacklist" class="form-check">
+                      <!-- <input class="form-check-input" type="checkbox""> -->
+                      <!-- <label class="form-check-label" for="opt_enableBlacklist">啟用使用者黑名單功能</label> -->
+                    </div>
+                    <div class="form-group">
+                      <label class="alert alert-info" for="opt_blacklistedUsers" id="opt_blacklistInstruction"></label>
+                      <!-- blacklist item start -->
+                      <textarea class="form-control" id="opt_blacklistedUsers" rows="25"></textarea>
+                      <!-- blacklist item end -->
                     </div>
                   </div>
                 </div>
-                <div class="group">
+                <div class="tab-pane" id="tabContentAbout">
                   <div class="list-group">
-                    <h4 id="opt_mouseBrowsing" class="list-group-item-heading"></h4>
-                    <div class="list-group-item-text">
-                      <div id="opt_useMouseBrowsing" class="checkbox">
-                      </div>
-                      <div id="opt_mouseBrowsingHighlight" class="checkbox">
-                      </div>
-                      <div id="opt_mouseBrowsingHighlightColor">
-                      </div>
-                      <div id="opt_mouseLeftFunction" class="form-group">
-                      </div>
-                      <div id="opt_mouseMiddleFunction" class="form-group">
-                      </div>
-                      <div id="opt_mouseWheelFunction1" class="form-group">
-                      </div>
-                      <div id="opt_mouseWheelFunction2" class="form-group">
-                      </div>
-                      <div id="opt_mouseWheelFunction3" class="form-group">
-                      </div>
+                    <h4 class="list-group-item">PttChrome <small>by <a href="mailto:yangchuck@gmail.com" target="_blank" rel="noreferrer">Chuck Yang</a></small></h4>
+                    <a href='https://github.com/iamchucky/PttChrome' target="_blank" rel="noreferrer">https://github.com/iamchucky/PttChrome</a>
+                    <div class="list-group-item" style="margin-top:10px;">
+                      <a id="about_review" href="https://chrome.google.com/webstore/detail/pttchrome/hhnlfapopmaimdlldbknjdgekpgffmbo/reviews" target="_blank" rel="noreferrer" class="btn btn-default"></a>
+                      <a id="about_feedback" href="mailto:pttchrome.feedback@gmail.com" target="_blank" rel="noreferrer" class="btn btn-default"></a>
+                      <a id="about_fbpage" href="https://www.facebook.com/pttchrome" target="_blank" rel="noreferrer" class="btn btn-default"></a>
                     </div>
                   </div>
-                </div>
-              </div>
-
-              <div class="tab-pane" id="tabContentAutologin">
-                <div class="group">
-                  <small id="opt_autologinWarning" style="color:red;"></small>
                   <div class="list-group">
-                    <h4 id="opt_autologin" class="list-group-item-heading" style="margin-bottom:10px;"></h4>
-                    <div class="list-group-item-text">
-                      <div id="login_username" class="form-group"></div>
-                      <div id="login_password" class="form-group"></div>
-                    </div>
-                    <div id="opt_enableDeleteDupLogin" class="checkbox">
-                    </div>
-                    <div class="btn-group" data-toggle="buttons" style="margin-left:20px;">
-                      <label class="btn btn-default">
-                        <input type="radio" name="options" id="opt_deleteDupLoginYes"> Y
-                      </label>
-                      <label class="btn btn-default active">
-                        <input type="radio" name="options" id="opt_deleteDupLoginNo" checked> N
-                      </label>
+                    <span id="about_promote" style="color:red;"></span>
+                    <a href="https://chrome.google.com/webstore/detail/web2pttchrome/pjemnpgdmnlkkcpaddlnlegmdfpohnep" target="_blank" rel="noreferrer">Web2PttChrome</a>
+                  </div>
+                  <div class="list-group">
+                    <h4 id="about_version_title" class="list-group-item"></h4>
+                    <div class="list-group-item">
+                      <div id="about_version"></div>
                     </div>
                   </div>
-                </div>
-              </div>
-
-              <div class="tab-pane" id="tabContentBlacklist">
-                <div id="opt_enableBlacklist" class="checkbox">
-                </div>
-                <span id="opt_blacklistInstruction"></span>
-                <!-- blacklist item start -->
-                <textarea id="opt_blacklistedUsers" class="form-control"></textarea>
-                <!-- blacklist item end -->
-              </div>
-
-              <div class="tab-pane" id="tabContentExtensions">
-                <div class="group">
                   <div class="list-group">
-                    <h4 id="ext_quickSearch" class="list-group-item-heading"></h4>
-                    <div class="list-group-item-text" style="margin-top:15px;">
-                      <ul id="ext_quickSearchList" class="form-group" style="padding:0px">
+                    <h4 id="about_new_title" class="list-group-item"></h4>
+                    <div class="list-group-item">
+                      <ul id="about_new">
                       </ul>
                     </div>
                   </div>
                 </div>
               </div>
-
-              <div class="tab-pane" id="tabContentAbout">
-                <div class="list-group">
-                  <h4 class="list-group-item-heading">PttChrome <small>by <a href="mailto:yangchuck@gmail.com" target="_blank" rel="noreferrer">Chuck Yang</a></small></h4>
-                  <a href='https://github.com/iamchucky/PttChrome' target="_blank" rel="noreferrer">https://github.com/iamchucky/PttChrome</a>
-                  <div class="list-group-item-text" style="margin-top:10px;">
-                    <a id="about_review" href="https://chrome.google.com/webstore/detail/pttchrome/hhnlfapopmaimdlldbknjdgekpgffmbo/reviews" target="_blank" rel="noreferrer" class="btn btn-default"></a>
-                    <a id="about_feedback" href="mailto:pttchrome.feedback@gmail.com" target="_blank" rel="noreferrer" class="btn btn-default"></a>
-                    <a id="about_fbpage" href="https://www.facebook.com/pttchrome" target="_blank" rel="noreferrer" class="btn btn-default"></a>
-                  </div>
-                </div>
-                <div class="list-group">
-                  <span id="about_promote" style="color:red;"></span>
-                  <a href="https://chrome.google.com/webstore/detail/web2pttchrome/pjemnpgdmnlkkcpaddlnlegmdfpohnep" target="_blank" rel="noreferrer">Web2PttChrome</a>
-                </div>
-                <div class="list-group">
-                  <h4 id="about_version_title" class="list-group-item-heading"></h4>
-                  <div class="list-group-item-text">
-                    <div id="about_version"></div>
-                  </div>
-                </div>
-                <div class="list-group">
-                  <h4 id="about_new_title" class="list-group-item-heading"></h4>
-                  <div class="list-group-item-text">
-                    <ul id="about_new">
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
             </div>
-
+          </div>
+          <div class="modal-footer">
+            <button id="opt_reset" type="button" class="btn btn-primary"></button>
           </div>
         </div>
       </div>
     </div>
     <div id="connectionAlert" class="alert alert-danger alert-dismissable fade in">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <button type="button" class="btn btn-close close" data-bs-dismiss="alert" aria-hidden="true"></button>
       <h4 id="connectionAlertHeader"></h4>
       <p id="connectionAlertText"></p>
       <p>
-        <button id="connectionAlertReconnect" type"button" class="btn btn-danger"></button>
+        <button id="connectionAlertReconnect" class="btn btn-danger"></button>
         <span id="connectionAlertPortOption1" style="margin-left:5px;">or</span>
         <span id="connectionAlertPortOption2" style="cursor:pointer;margin-left:5px;text-decoration:underline;"> Try with port 443 </span>
       </p>
@@ -269,99 +355,106 @@
           <div id="alreadyInstalledHint1" style="margin-bottom:5px; font-size:30px;">Already have PttChrome installed?</div>
           <div id="alreadyInstalledHint2">To launch PttChrome, please set Google Chrome as your default browser and launch from the "批" icon</div>
           <div id="alreadyInstalledHint3" style="margin:10px 0;">OR</div>
-          <div id="alreadyInstalledHint4">Add https://brli.github.io/PttChrome/ to Chrome bookmarks and launch PttChrome from the bookmark</div>
+          <div id="alreadyInstalledHint4">Add http://iamchucky.github.io/PttChrome/ to Chrome bookmarks and launch PttChrome from the bookmark</div>
         </div>
       </div>
     </div>
     <img id="picPreview" src='' style='max-height:80%; max-width:90%'></img>
     <i id="picLoading" class="glyphicon glyphicon-refresh glyphicon-refresh-animate" style="display:none; position:absolute; z-index:2"></i>
 
-    <div id="liveHelper" class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-body nomouse_command" style="height:60px;">
-          <button id="liveHelperClose" type="button" class="close nomouse_command"><span>&times;</span></button>
-          <button type="button" class="btn btn-default nomouse_command" style="float:left;margin-top:-6px" data-toggle="button" id="liveHelperEnable">Enable</button>
-          <span id="liveHelperSpan" class="nomouse_command" style="margin-left:5px;margin-right:5px;float:left;">pushthread auto-update every</span>
-          <input id="liveHelperSec" type="number" style="float:left;margin-top:-6px;width:70px;" class="form-control nomouse_command" value="1"></input>
-          <span id="liveHelperSpanSec" class="nomouse_command" style="margin-left:5px;float:left;">sec</span>
-        </div>
-      </div>
-    </div>
-
-    <div id="inputHelper" class="modal-dialog">
-      <div class="modal-content">
-
-        <div class="modal-header">
-          <button id="inputHelperClose" type="button" class="close"><span>&times;</span></button>
-          <h4 class="modal-title">Modal title</h4>
-        </div>
-
-        <div class="modal-body">
-          <ul id="inputHelperTabTitle" class="nav nav-pills nav-justified" role="tablist">
-            <li class="active" id="colorsTabTitle">
-              <a href="#colorHelperTab" role="tab" data-toggle="tab"></a>
-            </li>
-
-            <li class="dropdown" id="symbolsTabTitle">
-              <a class="dropdown-toggle" data-toggle="dropdown">
-              </a>
-              <ul class="dropdown-menu" role="menu">
-              </ul>
-            </li>
-
-            <li class="dropdown" id="emoticonsTabTitle">
-              <a class="dropdown-toggle" data-toggle="dropdown">
-              </a>
-              <ul class="dropdown-menu" role="menu">
-              </ul>
-            </li>
-
-          </ul>
-
-          <div id="inputHelperTabContent" class="tab-content">
-            <div id="colorHelperTab" class="tab-pane active" style="height:166px;">
-              <ul id="colorHelperList">
-                <li style="background-color:black" value="0"></li>
-                <li class="b1" value="1"></li>
-                <li class="b2" value="2"></li>
-                <li class="b3" value="3"></li>
-                <li class="b4" value="4"></li>
-                <li class="b5" value="5"></li>
-                <li class="b6" value="6"></li>
-                <li class="b7" value="7"></li>
-                <li class="b8" value="8"></li>
-                <li class="b9" value="9"></li>
-                <li class="b10" value="10"></li>
-                <li class="b11" value="11"></li>
-                <li class="b12" value="12"></li>
-                <li class="b13" value="13"></li>
-                <li class="b14" value="14"></li>
-                <li class="b15" value="15"></li>
-              </ul>
-              <div align="center" style="color:#c0c0c0; background-color:black; height:38px; margin-bottom:10px; padding-top:8px;">
-                <span id="colorHelperPreview" class="q7 b0">▅ PREVIEW ▅</span>
-              </div>
-              <div id="colorHelperBlink" class="checkbox">
-              </div>
-              <div class="btn-group dropdown" style="float:right">
-                <button id="colorHelperSend" type="button" class="btn btn-default">Send</button>
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                  <span class="caret"></span>
-                </button>
-                <ul id="colorHelperSendMenu" class="dropdown-menu" role="menu">
-                  <li><a id="colorHelperSendMenuFore" type="foreground">Send foreground only</a></li>
-                  <li><a id="colorHelperSendMenuBack" type="background">Send background only</a></li>
-                  <li class="divider"></li>
-                  <li><a id="colorHelperSendMenuReset" type="reset">Send reset code</a></li>
-                </ul>
+    <!-- start live helper-->
+    <div class="modal" id="liveHelper">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4>Live Article Helper</h3>
+            <button id="liveHelperClose" type="button" class="btn-close close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <div class="form-group row align-items-center">
+                <label id="liveHelperSpan" class="col-auto">pushthread auto-update every</label>
+                <div class="input-group col">
+                  <input id="liveHelperSec" type="number" class="form-control" value="1"></input>
+                  <span id="liveHelperSpanSec" class="input-group-text col-auto">sec</span>
+                </div>
               </div>
             </div>
           </div>
-
-
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary align-items-right" data-bs-toggle="button" id="liveHelperEnable">Enable</button>
+          </div>
         </div>
-
-      </div> <!-- /.modal-content -->
-    </div> <!-- /.modal-dialog -->
+      </div>
+    </div>
+    <!-- start input helper-->
+    <div class="modal" id="inputHelper">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Modal title</h4>
+            <button id="inputHelperClose" type="button" class="btn btn-close close"></button>
+          </div>
+          <div class="modal-body">
+            <ul id="inputHelperTabTitle" class="nav nav-pills nav-justified" role="tablist">
+              <li class="active" id="colorsTabTitle">
+                <a href="#colorHelperTab" role="tab" data-bs-toggle="tab"></a>
+              </li>
+              <li class="dropdown" id="symbolsTabTitle">
+                <a class="dropdown-toggle dropdown-item" data-bs-toggle="dropdown">
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                </ul>
+              </li>
+              <li class="dropdown" id="emoticonsTabTitle">
+                <a class="dropdown-toggle dropdown-item" data-bs-toggle="dropdown">
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                </ul>
+              </li>
+            </ul>
+            <div id="inputHelperTabContent" class="tab-content">
+              <div id="colorHelperTab" class="tab-pane active" style="height:166px;">
+                <ul id="colorHelperList">
+                  <li style="background-color:black" value="0"></li>
+                  <li class="b1" value="1"></li>
+                  <li class="b2" value="2"></li>
+                  <li class="b3" value="3"></li>
+                  <li class="b4" value="4"></li>
+                  <li class="b5" value="5"></li>
+                  <li class="b6" value="6"></li>
+                  <li class="b7" value="7"></li>
+                  <li class="b8" value="8"></li>
+                  <li class="b9" value="9"></li>
+                  <li class="b10" value="10"></li>
+                  <li class="b11" value="11"></li>
+                  <li class="b12" value="12"></li>
+                  <li class="b13" value="13"></li>
+                  <li class="b14" value="14"></li>
+                  <li class="b15" value="15"></li>
+                </ul>
+                <div style="color:#c0c0c0; background-color:black; height:38px; margin-bottom:10px; padding-top:8px;">
+                  <span id="colorHelperPreview" class="q7 b0">▅ PREVIEW ▅</span>
+                </div>
+                <div id="colorHelperBlink" class="checkbox">
+                </div>
+                <div class="btn-group dropdown" style="float:right">
+                  <button id="colorHelperSend" type="button" class="btn btn-default">Send</button>
+                  <button type="button" class="btn btn-default dropdown-toggle" data-bs-toggle="dropdown">
+                    <span class="caret"></span>
+                  </button>
+                  <ul id="colorHelperSendMenu" class="dropdown-menu" role="menu">
+                    <li><a id="colorHelperSendMenuFore" type="foreground">Send foreground only</a></li>
+                    <li><a id="colorHelperSendMenuBack" type="background">Send background only</a></li>
+                    <li class="dropdown-divider"></li>
+                    <li><a id="colorHelperSendMenuReset" type="reset">Send reset code</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div> <!-- /.modal-body-->
+        </div> <!-- /.modal-content -->
+      </div> <!-- /.modal-dialog -->
+    </div> <!-- end input helper -->
   </body>
 </html>
