@@ -354,6 +354,11 @@ pttchrome.App.prototype.setupLiveHelper = function() {
 
   var self = this;
   $('#liveHelperEnable').click(function(e) {
+    if ($(this).hasClass('active')){
+      $(this).removeClass('btn-secondary').addClass('btn-primary');
+    } else {
+      $(this).removeClass('btn-primary').addClass('btn-secondary');
+    }
     self.onLiveHelperEnableClicked(true);
   });
   $('#liveHelperEnable').tooltip({title:'Alt + r'});
@@ -364,8 +369,7 @@ pttchrome.App.prototype.setupLiveHelper = function() {
       sec = 1;
       $(this).val(sec);
     }
-    var enableThis = $('#liveHelperEnable').hasClass('active');
-    if (enableThis) {
+    if ($('#liveHelperEnable').hasClass('active')) {
       self.setAutoPushthreadUpdate(sec);
     }
   });
@@ -376,8 +380,7 @@ pttchrome.App.prototype.setupLiveHelper = function() {
 };
 
 pttchrome.App.prototype.onLiveHelperEnableClicked = function(fromUi) {
-  var enableThis = !$('#liveHelperEnable').hasClass('active');
-  if (enableThis) {
+  if (!$('#liveHelperEnable').hasClass('active')) {
     // cancel easy reading mode first
     this.view.useEasyReadingMode = false;
     this.switchToEasyReadingMode();
@@ -385,6 +388,7 @@ pttchrome.App.prototype.onLiveHelperEnableClicked = function(fromUi) {
     this.setAutoPushthreadUpdate(sec);
     if (!fromUi) {
       $('#liveHelperEnable').addClass('active');
+      $(this).setAttribute("aria-pressed", "true");
     }
   } else {
     this.disableLiveHelper(fromUi);
@@ -394,7 +398,8 @@ pttchrome.App.prototype.onLiveHelperEnableClicked = function(fromUi) {
 pttchrome.App.prototype.disableLiveHelper = function(fromUi) {
   this.setAutoPushthreadUpdate(-1);
   if (!fromUi) {
-    $('#liveHelperEnable').removeClass('active');
+    $('#liveHelperEnable').removeClass('active').removeClass('btn-primary').addClass('btn-secondary');
+    $(this).setAttribute("aria-pressed", "false");
   }
 };
 
