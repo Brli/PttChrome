@@ -354,11 +354,6 @@ pttchrome.App.prototype.setupLiveHelper = function() {
 
   var self = this;
   $('#liveHelperEnable').click(function(e) {
-    if ($(this).hasClass('active')){
-      $(this).removeClass('btn-secondary').addClass('btn-primary');
-    } else {
-      $(this).removeClass('btn-primary').addClass('btn-secondary');
-    }
     self.onLiveHelperEnableClicked(true);
   });
   $('#liveHelperEnable').tooltip({title:'Alt + r'});
@@ -388,7 +383,6 @@ pttchrome.App.prototype.onLiveHelperEnableClicked = function(fromUi) {
     this.setAutoPushthreadUpdate(sec);
     if (!fromUi) {
       $('#liveHelperEnable').addClass('active');
-      $(this).setAttribute("aria-pressed", "true");
     }
   } else {
     this.disableLiveHelper(fromUi);
@@ -398,8 +392,7 @@ pttchrome.App.prototype.onLiveHelperEnableClicked = function(fromUi) {
 pttchrome.App.prototype.disableLiveHelper = function(fromUi) {
   this.setAutoPushthreadUpdate(-1);
   if (!fromUi) {
-    $('#liveHelperEnable').removeClass('active').removeClass('btn-primary').addClass('btn-secondary');
-    $(this).setAttribute("aria-pressed", "false");
+    $('#liveHelperEnable').removeClass('active');
   }
 };
 
@@ -496,7 +489,7 @@ pttchrome.App.prototype.doCopy = function(str) {
     str = str.replace(/\n/g, '\r');
     str = str.replace(/ +\r/g, '\r');
   }
-  
+
   // Doing copy by having the launch.js read message
   // and then copy onto clipboard
   if (this.appConn.isConnected) {
@@ -541,7 +534,7 @@ pttchrome.App.prototype.doPaste = function() {
   var port = this.appConn.appPort;
   if (!port)
     return;
-  
+
   // Doing paste by having the launch.js read the clipboard data
   // and then send the content on the onPasteDone
   if (this.appConn.isConnected) {
@@ -820,37 +813,37 @@ pttchrome.App.prototype.onMouse_click = function (cX, cY) {
     case 8:
       if (this.view.useEasyReadingMode && this.buf.startedEasyReading) {
         this.buf.cancelPageDownAndResetPrevPageState();
-      } 
+      }
       this.conn.send('['); //Previous post with the same title
       break;
     case 9:
       if (this.view.useEasyReadingMode && this.buf.startedEasyReading) {
         this.buf.cancelPageDownAndResetPrevPageState();
-      } 
+      }
       this.conn.send(']'); //Next post with the same title
       break;
     case 10:
       if (this.view.useEasyReadingMode && this.buf.startedEasyReading) {
         this.buf.cancelPageDownAndResetPrevPageState();
-      } 
+      }
       this.conn.send('='); //First post with the same title
       break;
     case 12:
       if (this.view.useEasyReadingMode && this.buf.startedEasyReading) {
         this.buf.cancelPageDownAndResetPrevPageState();
-      } 
+      }
       this.conn.send('\x1b[D\r\x1b[4~'); //Refresh post / pushed texts
       break;
     case 13:
       if (this.view.useEasyReadingMode && this.buf.startedEasyReading) {
         this.buf.cancelPageDownAndResetPrevPageState();
-      } 
+      }
       this.conn.send('\x1b[D\r\x1b[4~[]'); //Last post with the same title (LIST)
       break;
     case 14:
       if (this.view.useEasyReadingMode && this.buf.startedEasyReading) {
         this.buf.cancelPageDownAndResetPrevPageState();
-      } 
+      }
       this.conn.send('\x1b[D\x1b[4~[]\r'); //Last post with the same title (READING)
       break;
     default:
@@ -1136,7 +1129,7 @@ pttchrome.App.prototype.onPrefChange = function(pref, name) {
       break;
     case 'fontFace':
       var fontFace = pref.get(name);
-      if (!fontFace) 
+      if (!fontFace)
         fontFace='monospace';
       this.view.setFontFace(fontFace);
       break;
@@ -1165,10 +1158,10 @@ pttchrome.App.prototype.onPrefChange = function(pref, name) {
 };
 
 pttchrome.App.prototype.checkClass = function(cn) {
-  return (  cn.indexOf("closeSI") >= 0  || cn.indexOf("EPbtn") >= 0 || 
-      cn.indexOf("closePP") >= 0 || cn.indexOf("picturePreview") >= 0 || 
-      cn.indexOf("drag") >= 0    || cn.indexOf("floatWindowClientArea") >= 0 || 
-      cn.indexOf("WinBtn") >= 0  || cn.indexOf("sBtn") >= 0 || 
+  return (  cn.indexOf("closeSI") >= 0  || cn.indexOf("EPbtn") >= 0 ||
+      cn.indexOf("closePP") >= 0 || cn.indexOf("picturePreview") >= 0 ||
+      cn.indexOf("drag") >= 0    || cn.indexOf("floatWindowClientArea") >= 0 ||
+      cn.indexOf("WinBtn") >= 0  || cn.indexOf("sBtn") >= 0 ||
       cn.indexOf("nonspan") >= 0 || cn.indexOf("nomouse_command") >= 0);
 };
 
@@ -1356,7 +1349,7 @@ pttchrome.App.prototype.mouse_over = function(e) {
 };
 
 pttchrome.App.prototype.mouse_scroll = function(e) {
-  if (this.modalShown) 
+  if (this.modalShown)
     return;
   // if in easyreading, use it like webpage
   if (this.view.useEasyReadingMode && this.buf.pageState == 3) {
@@ -1488,7 +1481,7 @@ pttchrome.App.prototype.setupContextMenus = function() {
       $('.contextSel').hide();
       $('.contextNormal').hide();
     } else {
-      if (window.getSelection().isCollapsed) { 
+      if (window.getSelection().isCollapsed) {
         $('.contextUrl').hide();
         $('.contextSel').hide();
         $('.contextNormal').show();
@@ -1527,12 +1520,12 @@ pttchrome.App.prototype.setupContextMenus = function() {
           var mouseWidth = e.pageX;
           var pageWidth = $(window).width();
           var menuWidth = $(menuSelector).width();
-          
+
           // opening menu would pass the side of the page
           if (mouseWidth + menuWidth > pageWidth &&
               menuWidth < mouseWidth) {
               return mouseWidth - menuWidth;
-          } 
+          }
           return mouseWidth;
         }(e),
         top: function(e) {
@@ -1544,7 +1537,7 @@ pttchrome.App.prototype.setupContextMenus = function() {
           if (mouseHeight + menuHeight > pageHeight &&
               menuHeight < mouseHeight) {
               return mouseHeight - menuHeight;
-          } 
+          }
           return mouseHeight;
         }(e)
       });
@@ -1615,44 +1608,44 @@ pttchrome.App.prototype.setupContextMenus = function() {
   $('#cmenu_settings a').text(i18n('cmenu_settings'));
 
   var contextMenuItemOnClickHandler = {
-    'cmenu_copy': function() { 
-      self.doCopy(selectedText); 
+    'cmenu_copy': function() {
+      self.doCopy(selectedText);
     },
-    'cmenu_copyAnsi': function() { 
-      self.doCopyAnsi(); 
+    'cmenu_copyAnsi': function() {
+      self.doCopyAnsi();
     },
-    'cmenu_paste': function() { 
-      self.doPaste(); 
+    'cmenu_paste': function() {
+      self.doPaste();
     },
-    'cmenu_selectAll': function() { 
-      self.doSelectAll(); 
+    'cmenu_selectAll': function() {
+      self.doSelectAll();
     },
-    'cmenu_openUrlNewTab': function() { 
-      self.doOpenUrlNewTab(aElement); 
+    'cmenu_openUrlNewTab': function() {
+      self.doOpenUrlNewTab(aElement);
     },
     'cmenu_copyLinkUrl': function() {
-      self.doCopy(contextOnUrl); 
+      self.doCopy(contextOnUrl);
     },
-    'cmenu_mouseBrowsing': function() { 
-      self.switchMouseBrowsing(); 
+    'cmenu_mouseBrowsing': function() {
+      self.switchMouseBrowsing();
     },
-    'cmenu_goToOtherSite': function() { 
-      self.doGoToOtherSite(); 
+    'cmenu_goToOtherSite': function() {
+      self.doGoToOtherSite();
     },
-    'cmenu_showInputHelper': function() { 
-      self.inputHelper.showHelper(); 
+    'cmenu_showInputHelper': function() {
+      self.inputHelper.showHelper();
     },
-    'cmenu_showLiveArticleHelper': function() { 
-      $('#liveHelper').show(); 
+    'cmenu_showLiveArticleHelper': function() {
+      $('#liveHelper').show();
     },
-    'cmenu_addBlacklistUserId': function() { 
-      self.doAddBlacklistUserId(contextOnUserId); 
+    'cmenu_addBlacklistUserId': function() {
+      self.doAddBlacklistUserId(contextOnUserId);
     },
-    'cmenu_removeBlacklistUserId': function() { 
-      self.doRemoveBlacklistUserId(contextOnUserId); 
+    'cmenu_removeBlacklistUserId': function() {
+      self.doRemoveBlacklistUserId(contextOnUserId);
     },
-    'cmenu_settings': function() { 
-      self.doSettings(); 
+    'cmenu_settings': function() {
+      self.doSettings();
     }
   };
 
